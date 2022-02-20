@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+{%- include head.html -%}
+
+
+<body>
+
+{%- include header.html -%}
+
+<main class="page-content" aria-label="Content">
+    <div class="wrapper">
+        <!-- El título que aparece en la página -->
+        <h1 id="titulo">Precio de criptomonedas en tiempo real</h1>
+
+        <select name="monedas" id="menuMonedas">
+            <option value="bitcoin" selected="selected">Bitcoin</option>
+            <option value="ethereum">Ethereum</option>
+            <option value="monero">Monero</option>
+            <option value="litecoin">Litecoin</option>
+        </select>
+
+        <div id="modulo1">
+            <p id="contexto1"></p>
+            <p id="contexto2"></p>
+        </div>
+        <div id="modulo2"></div>
+        <div id="descripcion">
+            <p>Párrafo 1 hello</p>
+            <p>Párrafo 2 world</p>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+
+    </div>
+</main>
+
+{%- include footer.html -%}
+
+</body>
+
+</html>
+
