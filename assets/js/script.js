@@ -131,7 +131,11 @@ function actualizar(objetoMoneda) {
     // De momento no es muy descriptivo, deben modificarlo para comenzar a ser más claros con el público general.
     // El que ven en el ejemplo terminado es:
     // contexto1.innerText = "Actualmente, el precio de " + menu.value + " es de: " + formatoUSD.format(objetoMoneda.precioActual) + " USD.";
-    contexto1.innerText = '- ' + menu.value + ': ' + formatoUSD.format(objetoMoneda.precioActual) + ' USD.';
+
+    var d = new Date()
+
+    contexto1.innerHTML = 'Precio ' + menu.value.charAt(0).toUpperCase() + menu.value.slice(1) + ' al '+ d.toLocaleString() +
+    ' <h2>' + formatoUSD.format(objetoMoneda.precioActual) + ' USD.</h2>';
 
     // Para el segundo texto vamos a hacer comparaciones entre el precio inicial y el actual.
     // El texto va a indicar si es igual, ha subido o bajado y la diferencia de cuánto ha cambiado el precio.
@@ -139,12 +143,15 @@ function actualizar(objetoMoneda) {
 
     if (precioInicial < objetoMoneda.precioActual) {
         var diferencia = objetoMoneda.precioActual - precioInicial;
-        contexto2.innerText = 'subió + ' + formatoUSD.format(diferencia);
+        contexto2.innerHTML = '<h3>Subió +' + formatoUSD.format(diferencia) + '</h3>';
+        contexto2.style.color = 'green';
     } else if (precioInicial > objetoMoneda.precioActual) {
         var diferencia = precioInicial - objetoMoneda.precioActual;
-        contexto2.innerText = 'bajó - ' + formatoUSD.format(diferencia);
+        contexto2.innerHTML = '<h3>Bajó -' + formatoUSD.format(diferencia) + '</h3>';
+        contexto2.style.color = 'red';
     } else {
-        contexto2.innerText = 'igual = 0';
+        contexto2.innerHTML = 'Igual = 0';
+        contexto2.style.color = 'blue';
     }
 
     // El eje X que definimos antes lo actualizamos con un método de d3 que busca el rango de fechas en todos los datos disponibles hasta el momento.
